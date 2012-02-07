@@ -156,7 +156,7 @@ class MainWindow(QMainWindow):
         rightLayout = QVBoxLayout()
 
         self.searchEdit = QLineEdit()
-        self.searchEdit.setText("Search")
+        # self.searchEdit.setText("Search")
         self.itemsView = QListWidget()
         self.webView = QWebView()
         self.webView.load(QUrl("about:blank"))
@@ -241,6 +241,8 @@ class MainWindow(QMainWindow):
         else:
             self.showEntries(self.entries)
             self.currentEntries = self.entries
+            self.itemsView.setCurrentRow(0)
+            self.selectItem()
 
 
     def selectItem(self):
