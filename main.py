@@ -216,6 +216,7 @@ class MainWindow(QMainWindow):
 
     def setEntries(self, entries):
         self.entries = entries
+        self.currentEntries = entries
         self.showEntries(entries)
 
 
@@ -236,13 +237,15 @@ class MainWindow(QMainWindow):
         if text:
             entries = filter(lambda e: text in e['title'], self.entries)
             self.showEntries(entries)
+            self.currentEntries = entries
         else:
             self.showEntries(self.entries)
+            self.currentEntries = self.entries
 
 
     def selectItem(self):
         row = self.itemsView.currentRow()
-        entry = self.entries[row]
+        entry = self.currentEntries[row]
 
         content = entry['content']
         url = entry['url']
